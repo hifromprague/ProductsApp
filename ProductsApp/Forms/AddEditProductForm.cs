@@ -29,7 +29,6 @@ namespace ProductsApp.Forms
 
             _context = context;
             _productToEdit = productToEdit;
-
         }
 
        
@@ -69,11 +68,8 @@ namespace ProductsApp.Forms
             if (_productToEdit != null) 
             {
                textBox1.Text = _productToEdit.Name;
-                textBox2.Text = _productToEdit.Price.ToString();
-
+               textBox2.Text = _productToEdit.Price.ToString();
             }
-           
-
         }
     }
 }

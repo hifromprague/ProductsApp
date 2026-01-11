@@ -56,7 +56,6 @@ namespace ProductsApp.Forms
 
         private void toolStripEditButton_Click(object sender, EventArgs e)
         {
-
             if (dataGridView1.CurrentRow != null)
             {
                 var product = (Product)dataGridView1.CurrentRow.DataBoundItem;
@@ -67,10 +66,7 @@ namespace ProductsApp.Forms
                 {
                     RefreshDataSource();
                 }
-
             }
-
-
         }
 
         private void ToolStripDeleteButton_click(object sender, EventArgs e)
@@ -84,8 +80,6 @@ namespace ProductsApp.Forms
                     _context.SaveChanges();
                     RefreshDataSource();
                 }
-                
-
             }
         }
     }

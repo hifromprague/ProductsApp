@@ -38,6 +38,8 @@
             button2 = new Button();
             dataGridView1 = new DataGridView();
             bindingSource1 = new BindingSource(components);
+            label3 = new Label();
+            textBox2 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)productBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
@@ -87,12 +89,13 @@
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 5;
-            button1.Text = "button1";
+            button1.Text = "Save";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
-            button2.Location = new Point(410, 35);
+            button2.Location = new Point(545, 35);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 6;
@@ -108,14 +111,32 @@
             dataGridView1.Location = new Point(217, 85);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(362, 150);
+            dataGridView1.Size = new Size(362, 336);
             dataGridView1.TabIndex = 7;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(400, 9);
+            label3.Name = "label3";
+            label3.Size = new Size(40, 15);
+            label3.TabIndex = 8;
+            label3.Text = "Count";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(400, 37);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(139, 23);
+            textBox2.TabIndex = 9;
             // 
             // AddEditOrderForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(812, 450);
+            Controls.Add(textBox2);
+            Controls.Add(label3);
             Controls.Add(dataGridView1);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -145,5 +166,7 @@
         private Button button2;
         private DataGridView dataGridView1;
         private BindingSource bindingSource1;
+        private Label label3;
+        private TextBox textBox2;
     }
 }

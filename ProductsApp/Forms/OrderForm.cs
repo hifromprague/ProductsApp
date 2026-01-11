@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using ProductsApp.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -37,7 +39,10 @@ namespace ProductsApp.Forms
 
         private void RefreshDataSource()
         {
-            orderBindingSource.DataSource = _context.Orders.ToList();
+            orderBindingSource.DataSource = _context.Orders
+                                                    .Include(x => x.Items)
+                                                    .ThenInclude(y => y.Product)
+                                                    .ToList();
             orderBindingSource.ResetBindings(false);
         }
 
@@ -49,6 +54,36 @@ namespace ProductsApp.Forms
             if (dialogResult == DialogResult.OK)
             {
                 RefreshDataSource();
+            }
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                var order = (Order)dataGridView1.CurrentRow.DataBoundItem;
+                var addEditForm = new AddEditOrderForm(_context, order);
+                var dialogResult = addEditForm.ShowDialog();
+
+                if (dialogResult == DialogResult.OK)
+                {
+                    RefreshDataSource();
+                }
+            }
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                var orderToDelete = (Order)dataGridView1.CurrentRow.DataBoundItem;
+                if (_context.Orders.Find(orderToDelete.Id) != null)
+                {
+                    _context.ProductItems.RemoveRange(orderToDelete.Items);
+                    _context.Orders.Remove(orderToDelete);
+                    _context.SaveChanges();
+                    RefreshDataSource();
+                }
             }
         }
     }
