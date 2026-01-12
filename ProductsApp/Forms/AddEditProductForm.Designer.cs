@@ -89,6 +89,7 @@
             Controls.Add(label1);
             Name = "AddEditProductForm";
             Text = "AddEditProductForm";
+            Load += AddEditForm_load;
             ResumeLayout(false);
             PerformLayout();
         }

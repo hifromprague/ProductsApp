@@ -31,12 +31,14 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductForm));
             toolStrip1 = new ToolStrip();
+            toolStripButton1 = new ToolStripButton();
+            toolStripEditButton = new ToolStripButton();
             dataGridView1 = new DataGridView();
             idDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             priceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             productBindingSource = new BindingSource(components);
-            toolStripButton1 = new ToolStripButton();
+            toolStripButton2 = new ToolStripButton();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)productBindingSource).BeginInit();
@@ -44,12 +46,32 @@
             // 
             // toolStrip1
             // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripEditButton, toolStripButton2 });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(800, 25);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton1
+            // 
+            toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
+            toolStripButton1.ImageTransparentColor = Color.Magenta;
+            toolStripButton1.Name = "toolStripButton1";
+            toolStripButton1.Size = new Size(23, 22);
+            toolStripButton1.Text = "toolStripButton1";
+            toolStripButton1.Click += toolStripButton1_Click;
+            // 
+            // toolStripEditButton
+            // 
+            toolStripEditButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripEditButton.Image = (Image)resources.GetObject("toolStripEditButton.Image");
+            toolStripEditButton.ImageTransparentColor = Color.Magenta;
+            toolStripEditButton.Name = "toolStripEditButton";
+            toolStripEditButton.Size = new Size(23, 22);
+            toolStripEditButton.Text = "toolStripEditButton";
+            toolStripEditButton.Click += toolStripEditButton_Click;
             // 
             // dataGridView1
             // 
@@ -91,15 +113,15 @@
             // 
             productBindingSource.DataSource = typeof(Models.Product);
             // 
-            // toolStripButton1
+            // toolStripButton2
             // 
-            toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
-            toolStripButton1.ImageTransparentColor = Color.Magenta;
-            toolStripButton1.Name = "toolStripButton1";
-            toolStripButton1.Size = new Size(23, 22);
-            toolStripButton1.Text = "toolStripButton1";
-            toolStripButton1.Click += toolStripButton1_Click;
+            toolStripButton2.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButton2.Image = (Image)resources.GetObject("toolStripButton2.Image");
+            toolStripButton2.ImageTransparentColor = Color.Magenta;
+            toolStripButton2.Name = "toolStripButton2";
+            toolStripButton2.Size = new Size(23, 22);
+            toolStripButton2.Text = "toolStripDeleteButton";
+            toolStripButton2.Click += ToolStripDeleteButton_click;
             // 
             // ProductForm
             // 
@@ -127,6 +149,8 @@
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private BindingSource productBindingSource;
+        private ToolStripButton toolStripEditButton;
         private ToolStripButton toolStripButton1;
+        private ToolStripButton toolStripButton2;
     }
 }

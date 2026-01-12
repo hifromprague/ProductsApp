@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProductsApp.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -50,6 +51,41 @@ namespace ProductsApp.Forms
             if (dialogResult == DialogResult.OK)
             {
                 RefreshDataSource();
+            }
+        }
+
+        private void toolStripEditButton_Click(object sender, EventArgs e)
+        {
+
+            if (dataGridView1.CurrentRow != null)
+            {
+                var product = (Product)dataGridView1.CurrentRow.DataBoundItem;
+                var addEditForm = new AddEditProductForm(_context, product);
+                var dialogResult = addEditForm.ShowDialog();
+
+                if (dialogResult == DialogResult.OK)
+                {
+                    RefreshDataSource();
+                }
+
+            }
+
+
+        }
+
+        private void ToolStripDeleteButton_click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                var productToDelete = (Product)dataGridView1.CurrentRow.DataBoundItem;
+                if (_context.Products.Find(productToDelete.Id) != null) 
+                {
+                    _context.Products.Remove(productToDelete);
+                    _context.SaveChanges();
+                    RefreshDataSource();
+                }
+                
+
             }
         }
     }
